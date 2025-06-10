@@ -255,9 +255,11 @@ body{
 }
 .destinations{
     display:flex;
-    justify-content: center;
+    justify-content: space-around;
     gap:40px;
     margin-top:32px;
+    width: 100%;
+    
 }
 .destination-card{
     background: #fff;
@@ -274,7 +276,7 @@ body{
 .destination-card img {
     width: 100%;
     /* Increase image height */
-    height: 260px;
+    height: 350px;
     object-fit: cover;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
@@ -307,3 +309,86 @@ body{
     font-size: 18px;
 }
 
+.destination span{
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 125%;
+    letter-spacing: 0%;
+
+}
+.newsletter-section {
+    background: #fff;
+    border-radius: 24px;
+    padding: 48px 48px 40px 48px;
+    margin: 48px auto 0 auto;
+    max-width: 80vw;
+    
+    top:1995px;
+    left: 55px;;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.newsletter-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #5E6282;
+    margin-bottom: 40px;
+    line-height: 1.4;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    align-items: center;
+}
+
+.newsletter-input-group {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 2px solid #5E6282;
+    border-radius: 12px;
+    padding: 0 16px;
+    height: 64px;
+    flex: 1;
+}
+
+.newsletter-icon {
+    font-size: 22px;
+    margin-right: 12px;
+    color: #5E6282;
+}
+
+.newsletter-input-group input {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    background: transparent;
+}
+
+.newsletter-btn {
+    background: #7ddae3;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 0 48px;
+    height: 64px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.newsletter-btn:hover {
+    background: #5ec2cb;
+}
