@@ -1,5 +1,6 @@
 body{
     background-color: #b1d9db;
+    overflow-x: hidden;
 }
 .nav{
     display: flex;
@@ -155,3 +156,154 @@ body{
     background-color: #DF6951;
     border-style: none;
 }
+.services{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 95%;
+    width:100%;
+    height: 419px;
+    top: 804px;
+    left: 55px;
+    position: absolute;
+    
+}
+.services h2{
+    font-family: "Poppins";
+    font-weight:600;
+    font-size:15px;
+    line-height: 100%;
+    width: 82px;
+    height: 23px;
+    top: 804px;
+    left: 518px;
+    color: #5E6282;
+    margin-top: 0;
+}
+.services h1{
+    width: 283px;
+    height: 38px;
+    top: 841px;
+    left: 418px;
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 32px;;
+}
+.cards{
+    display:flex;
+    margin-top:64px;
+    width: 100%;
+    justify-content: space-around;
+}
+.card{
+    background-color: #FFFFFF;
+    border-radius: 36px;
+    height: 284px;
+    width:242px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:40px;
+}
+.card h3{
+    font-family:"Poppins";
+    font-weight:400;
+    font-size:15px;
+    line-height: 100%;
+    color:#1e1d4c;
+}
+.card p{
+    font-family: "Poppins";
+    font-weight:400;
+    font-size:12px;
+    line-height: 26px;
+    margin: 14px 21px 14px 21px
+}
+.locations  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+.locations {
+    width:100%;
+    height:592px;
+    top:1313px;
+    left:57px;
+    position: absolute;
+}
+.locations h2{
+    width: 83px;
+    height: 23px;
+    font-family: "Poppins";
+    font-size: 15px;
+    font-weight:600;
+}
+.locations h1{
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: capitalize;
+
+}
+.destinations{
+    display:flex;
+    justify-content: center;
+    gap:40px;
+    margin-top:32px;
+}
+.destination-card{
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 4px 24px  rgba(0,0,0,0.06);
+    width: 315px;
+    /* Increase min-height for taller cards */
+    min-height: 430px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s;
+}
+.destination-card img {
+    width: 100%;
+    /* Increase image height */
+    height: 260px;
+    object-fit: cover;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+
+.destination-info {
+    padding: 32px 24px 24px 24px; /* More padding for a taller look */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.destination-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #5E6282;
+    margin-bottom: 8px;
+}
+.destination-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: #5E6282;
+}
+.destination-details .icon {
+    font-size: 18px;
+}
+
