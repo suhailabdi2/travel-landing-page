@@ -1,0 +1,36 @@
+*{
+    font-family: "Poppins", sans-serif;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aquamarine;
+}
+.form{
+    margin-top: 80px;
+    border-radius: 8px;
+    padding: 20px;
+    background-color:#FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+.names{
+    display: flex;
+    justify-content: space-between;
+}
+.names input{
+    width: 48%;
+    margin: 0;
+}
+input[type="text"],
+input[type="email"]{
+    width: 90%;
+    padding: 10px;    
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
