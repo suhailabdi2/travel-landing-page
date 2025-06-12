@@ -8,29 +8,82 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: aquamarine;
+    background-color: #b1d9db;
 }
 .form{
     margin-top: 80px;
     border-radius: 8px;
     padding: 20px;
-    background-color:#FFFFFF;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
+    background: #FFFFFF;
+    box-shadow: 0 6px 18px rgba(52, 1, 1, 0.1);
+}
+.form h2{
+    margin-bottom: 20px;
+
 }
 .names{
     display: flex;
     justify-content: space-between;
 }
-.names input{
-    width: 48%;
+.names input[type="text"]{
+    width: 70%;
     margin: 0;
 }
 input[type="text"],
-input[type="email"]{
+input[type="email"],textarea{
     width: 90%;
     padding: 10px;    
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
     margin-right: 10px;
+}
+button{
+    padding:10px 20px;
+    background-color: #4CAF50;
+    color: #FFFFFF;
+    border-radius: 8px;
+    border-style: none;
+}
+button:hover{
+    background-color: #45a049;
+    transition: 0.5s;
+    cursor: pointer;
+}
+span{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+.toast_succesful{
+    visibility: hidden;
+    text-align: center;
+    background-color: #333;
+    padding: 35px;
+    margin-top: 35px;
+}
+.toast_succesful.show{
+      visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }
