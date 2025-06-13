@@ -1,4 +1,5 @@
 const form = document.querySelector("form");
+const apikey="aqvapFo89CRZ_KHI9R1M1m-Ax2U";
 function validateEmail(mail){
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
 }

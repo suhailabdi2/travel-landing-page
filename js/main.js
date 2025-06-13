@@ -116,3 +116,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 }); 
 //
+fetch (`https://api.openweathermap.org/data/2.5/weather?lat=41.8967&lon=12.4822&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric
+`).then((response) => response.json())
+.then((data)=>renderWeather(data))
+.catch(error=>renderError(error));
+function renderWeather(data){
+    const d1=document.querySelector(".destination-header");
+    let para = document.createElement("p");
+    para.innerHTML=`${data.weather[0].description}`;
+    d1.appendChild(para);
+}
+function renderError(error){
+    console.log(error);
+}
+
