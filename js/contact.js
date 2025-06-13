@@ -55,8 +55,8 @@ form.addEventListener("submit",function(e){
             toast.classList.remove("show");
         },3000)
     }
-
-   
-
 })
 
+document.querySelector(".dp").addEventListener("click",function(e){
+    document.querySelector("#profile-picture").click();
+})
