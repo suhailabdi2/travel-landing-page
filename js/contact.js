@@ -6,13 +6,23 @@ function errorMessage(input){
     let error=input.parentElement.querySelector('.error');
     error.style.display="block";
 }
-function validatename(input){
-    if(input.value.trim()===""){
-        errorMessage(input);
-        return false;
+function removeError(input){
+    let error = input.parentElement.querySelector(".error");
+    if(error){
+        error.style.display="none";
     }
-    
+
 }
+document.querySelectorAll("input, textarea").forEach(function(input){
+    input.addEventListener("keyup",function(e){
+        removeError(input);
+    })}
+)
+
+
+
+
+
 form.addEventListener("submit",function(e){
     e.preventDefault();
     const fname= document.querySelector("#fname");
@@ -20,6 +30,7 @@ form.addEventListener("submit",function(e){
     const email= document.querySelector("#email");
     const message = document.querySelector("#message");
     const toast = document.querySelector(".toast_succesful");
+    const error = document.querySelector(".error");
     let valid = true;
     if(fname.value.trim()===""){
         errorMessage(fname);
@@ -39,7 +50,9 @@ form.addEventListener("submit",function(e){
     }
     if(valid){
         toast.className="show";
+        
     }
+
    
 
 })
