@@ -49,8 +49,11 @@ form.addEventListener("submit",function(e){
         valid=false;
     }
     if(valid){
-        toast.className="show";
-        
+        toast.classList.add("show");
+        console.log("works");
+        setTimeout(()=>{
+            toast.classList.remove("show");
+        },3000)
     }
 
    
