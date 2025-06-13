@@ -116,17 +116,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 }); 
 //
-fetch (`https://api.openweathermap.org/data/2.5/weather?lat=41.8967&lon=12.4822&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric
-`).then((response) => response.json())
+fetch (`https://api.openweathermap.org/data/2.5/weather?lat=41.8967&lon=12.4822&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric`).then((response) => response.json())
 .then((data)=>renderWeather(data))
 .catch(error=>renderError(error));
 function renderWeather(data){
     const d1=document.querySelector(".destination-header");
     let para = document.createElement("p");
-    para.innerHTML=`${data.weather[0].description}`;
+    para.innerHTML=`☀️${data.weather[0].description}`;
     d1.appendChild(para);
 }
 function renderError(error){
     console.log(error);
 }
-
+fetch (`https://api.openweathermap.org/data/2.5/weather?lat=51.507&lon=0.127&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric`).then((response) => response.json())
+.then((data)=>renderLondon(data))
+.catch(error=>renderError(error));
+function renderLondon(data){
+    const headers = document.querySelectorAll(".destination-header");
+    if (headers.length >= 2) {
+        let para = document.createElement("p");
+        para.innerHTML = `☀️ ${data.weather[0].description}`;
+    headers[1].appendChild(para); // index 1 is the second one
+}
+}
