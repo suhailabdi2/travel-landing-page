@@ -137,5 +137,28 @@ function renderLondon(data){
         let para = document.createElement("p");
         para.innerHTML = `☀️ ${data.weather[0].description}`;
     headers[1].appendChild(para); // index 1 is the second one
+    }
 }
-}
+
+const destinations=[
+    {name:"Rome,Italy",price:"$4.2K",days:12,image:"/images/Rome.png"},
+    {name:"London, UK",price:"$3.4K",days:8,image:"/images/London.jpg"},
+    {name:"Ibiza, Spain",price:"4K",days:8,image:"/images/ibiza.jpg"},
+    {name:"Paris,France",price:"$2.5K",days:13,image:"/images/europe.png"}
+];
+const container= document.querySelector(".destinations-grid");
+container.innerHTML=destinations.map(dest=>`
+    <div class="destination-card">
+        <img src="${dest.image} alt="${dest.name}>
+        <div class=destination-info>
+            <div class="destination-header">
+                <span>${dest.name}</span>
+                <span>${dest.price}</span>
+            </div>
+            <div class = "destination-details">
+                <span class="icon"> 🧭</span>
+                <span>${dest.days}Days Trip</span>
+            </div>
+        </div>
+    </div>
+    `).join('');
