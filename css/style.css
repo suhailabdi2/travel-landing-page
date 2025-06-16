@@ -56,10 +56,38 @@ a:visited{
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 .signUp:hover{
     background-color: #212832;
     color: #b1d9db;
+}
+
+/* Input Fields Styling */
+input[type="text"], select {
+    width: 200px;
+    height: 40px;
+    border: 1px solid #212832;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0 10px;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    background-color: #b1d9db;
+    color: #212832;
+}
+
+input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: #DF6951;
+    box-shadow: 0 0 10px rgba(223, 105, 81, 0.3);
+}
+
+input[type="text"]::placeholder {
+    color: #212832;
+    opacity: 0.7;
 }
 .hero{
     display: flex;

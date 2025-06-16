@@ -110,12 +110,18 @@
         <div class="locations">
             <h2>Top Selling</h2>
             <h1>Top Destinations</h1>
-            <input type="text" name="" id="search" placeholder="Search destinations....">
-            <select name="" id="sort-select">
-                <option value="name">Sort By Name</option>
-                <option value="price">Sort By Price</option>
-                <option value="days">Sort By Days</option>
-            </select>
+            <div class="search-container">
+                <input type="text" name="" id="search" placeholder="Search destinations....">
+                <select name="" id="sort-select">
+                    <option value="name">Sort By Name</option>
+                    <option value="price">Sort By Price</option>
+                    <option value="days">Sort By Days</option>
+                </select>
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                </div>
+                <div id="error" class="hidden"></div>
+            </div>
             <div class="destinations-grid">
                 
             </div>
