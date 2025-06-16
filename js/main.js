@@ -147,21 +147,7 @@ const destinations=[
 ];
 
 const container= document.querySelector(".destinations-grid");
-container.innerHTML=destinations.map(dest=>`
-    <div class="destination-card">
-        <img src="${dest.image}" alt="${dest.name}">
-        <div class=destination-info>
-            <div class="destination-header" data-city="${dest.name}">
-                <span>${dest.name}</span>
-                <span>${dest.price}</span>
-            </div>
-            <div class = "destination-details">
-                <span class="icon"> 🧭</span>
-                <span>${dest.days}Days Trip</span>
-            </div>
-        </div>
-    </div>
-    `).join('');
+
 destinations.forEach(destination=>{
     fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${destination.latitude}&lon=${destination.longitude}&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric`)
     .then((response) => response.json())
@@ -183,3 +169,31 @@ function renderWeather(name,data){
 function renderError(error){
     console.log(error);
 }
+document.getElementById('search').addEventListener("keyup", function (e) {
+    const query = e.target.value.toLowerCase();
+    const filtered = destinations.filter(dest =>
+        dest.name.toLowerCase().includes(query)
+    );
+    console.log(filtered);
+    renderDestinations(filtered);
+});
+function renderDestinations(list) {
+    container.innerHTML = list.map(dest => `
+        <div class="destination-card">
+            <img src="${dest.image}" alt="${dest.name}">
+            <div class="destination-info">
+                <div class="destination-header" data-city="${dest.name}">
+                    <span>${dest.name}</span>
+                    <span>${dest.price}</span>
+                </div>
+                <div class="destination-details">
+                    <span class="icon">🧭</span>
+                    <span>${dest.days} Days Trip</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+window.addEventListener("DOMContentLoaded", () => {
+    renderDestinations(destinations);
+});
