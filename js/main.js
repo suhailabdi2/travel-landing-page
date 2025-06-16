@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 }); 
 //
-fetch (`https://api.openweathermap.org/data/2.5/weather?lat=41.8967&lon=12.4822&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric`).then((response) => response.json())
+/*fetch (`https://api.openweathermap.org/data/2.5/weather?lat=41.8967&lon=12.4822&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric`).then((response) => response.json())
 .then((data)=>renderWeather(data))
 .catch(error=>renderError(error));
 function renderWeather(data){
@@ -125,10 +125,8 @@ function renderWeather(data){
     para.innerHTML=`☀️${data.weather[0].description}`;
     d1.appendChild(para);
 }
-function renderError(error){
-    console.log(error);
-}
-fetch (`https://api.openweathermap.org/data/2.5/weather?lat=51.507&lon=0.127&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric`).then((response) => response.json())
+
+/*fetch (`https://api.openweathermap.org/data/2.5/weather?lat=51.507&lon=0.127&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric`).then((response) => response.json())
 .then((data)=>renderLondon(data))
 .catch(error=>renderError(error));
 function renderLondon(data){
@@ -139,19 +137,21 @@ function renderLondon(data){
     headers[1].appendChild(para); // index 1 is the second one
     }
 }
+*/
 
 const destinations=[
-    {name:"Rome,Italy",price:"$4.2K",days:12,image:"/images/Rome.png"},
-    {name:"London, UK",price:"$3.4K",days:8,image:"/images/London.jpg"},
-    {name:"Ibiza, Spain",price:"4K",days:8,image:"/images/ibiza.jpg"},
-    {name:"Paris,France",price:"$2.5K",days:13,image:"/images/europe.png"}
+    {name:"Rome,Italy",price:"$4.2K",days:12,image:"./images/Rome.png", latitude:41.896,longitude:12.482},
+    {name:"London,UK",price:"$3.4K",days:8,image:"./images/London.jpg", latitude:51.5074,longitude:0.1278},
+    {name:"Ibiza,Spain",price:"4K",days:8,image:"./images/ibiza.jpg", latitude: 38.9088, longitude: 1.4322},
+    {name:"Paris,France",price:"$2.5K",days:13,image:"./images/europe.png", latitude:48.8566,longitude:2.3522}
 ];
+
 const container= document.querySelector(".destinations-grid");
 container.innerHTML=destinations.map(dest=>`
     <div class="destination-card">
-        <img src="${dest.image} alt="${dest.name}>
+        <img src="${dest.image}" alt="${dest.name}">
         <div class=destination-info>
-            <div class="destination-header">
+            <div class="destination-header" data-city="${dest.name}">
                 <span>${dest.name}</span>
                 <span>${dest.price}</span>
             </div>
@@ -162,3 +162,24 @@ container.innerHTML=destinations.map(dest=>`
         </div>
     </div>
     `).join('');
+destinations.forEach(destination=>{
+    fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${destination.latitude}&lon=${destination.longitude}&appid=43c1847a8970b73a267743e49f0e0c5c&units=metric`)
+    .then((response) => response.json())
+    .then((data)=>renderWeather(destination.name,data))
+    .catch(renderError)
+}    
+)
+function renderWeather(name,data){
+    const d1 = document.querySelector(`.destination-header[data-city="${name}"]`);
+    if (!d1) {
+        console.warn(`No element found for city: ${name}`);
+        return;
+    }
+    const para=document.createElement("p");
+    para.innerHTML=`⛅${data.weather[0].description} `;
+    d1.appendChild(para);
+    console.log(data);
+}
+function renderError(error){
+    console.log(error);
+}
