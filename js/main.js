@@ -218,12 +218,18 @@ promise.then(message =>{
     console.log("error:",err);
 })
 const hero = document.querySelector(".tagline");
+document.querySelector(".play").addEventListener("click",function(){
+
+
+    fetch("https://catfact.ninja/fact?max_length=78").then(response =>response.json())
+    .then(data =>{console.log(data);
+        renderfacts(data.fact);
+    })
+    .catch(error =>{console.log("Error:" ,error)}) }
+    )
+
+    
 function renderfacts(data){
     hero.innerHTML=data;
 }
-fetch("https://catfact.ninja/fact?max_length=78").then(response =>response.json())
-.then(data =>{console.log(data);
-    renderfacts(data.fact);
-})
 
-.catch(error =>{console.log("Error: " ,error)});
