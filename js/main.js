@@ -14,7 +14,6 @@ const destinations = [
     { id: 3, name: "Ibiza,Spain", price: 4000, days: 8, image: "./images/ibiza.jpg", location: { latitude: 38.9088, longitude: 1.4322 } },
     { id: 4, name: "Paris,France", price: 2500, days: 13, image: "./images/europe.png", location: { latitude: 48.8566, longitude: 2.3522 } }
 ];
-
 const DOMElements = {
     container: document.querySelector(".destinations-grid"),
     search: document.getElementById('search'),
@@ -23,10 +22,10 @@ const DOMElements = {
     error: document.getElementById('error')
 };
 
-// Utility Functions
+
 const formatPrice = (amount) => `$${amount.toLocaleString()}K`;
 
-// API Functions
+
 const getWeather = async (latitude, longitude) => {
     try {
         const response = await fetch(`${API_CONFIG.weather.baseUrl}?lat=${latitude}&lon=${longitude}&appid=${API_CONFIG.weather.apiKey}&units=${API_CONFIG.weather.units}`);
@@ -71,14 +70,14 @@ const renderDestinations = (list) => {
     `).join('');
 };
 
-// Search Functionality
+
 const searchDestinations = (query) => {
     return destinations.filter(dest =>
         dest.name.toLowerCase().includes(query.toLowerCase())
     );
 };
 
-// Sort Functions
+
 const sortFunctions = {
     'name': (a, b) => a.name.localeCompare(b.name),
     'price': (a, b) => a.price - b.price,
@@ -89,7 +88,6 @@ const sortDestinations = (list, sortBy) => {
     return [...list].sort(sortFunctions[sortBy]);
 };
 
-// Event Listeners
 DOMElements.search.addEventListener('input', async (e) => {
     const query = e.target.value;
     const filtered = searchDestinations(query);
@@ -102,15 +100,15 @@ DOMElements.sortSelect.addEventListener('change', (e) => {
     renderDestinations(sorted);
 });
 
-// Initialize
+
 const init = async () => {
     try {
         DOMElements.loading.classList.remove('hidden');
         
-        // Fetch weather for all destinations
+
         await Promise.all(destinations.map(renderWeather));
         
-        // Initial render
+       
         renderDestinations(destinations);
         
         DOMElements.loading.classList.add('hidden');
@@ -120,10 +118,9 @@ const init = async () => {
     }
 };
 
-// Start the application
+
 init();
 
-// Add touch support for mobile
 document.querySelectorAll('.cards, .destinations').forEach(carousel => {
     let isDown = false;
     let startX;
@@ -200,3 +197,33 @@ function initCarousel(container) {
 
 // Initialize all carousels
 document.querySelectorAll('.carousel-container').forEach(initCarousel);
+
+
+
+function hi(sum){
+    return sum ===0;
+}
+let promise = new Promise(function(resolve,reject){
+    let value=0;
+    if(hi(value)){
+        resolve("THe value is 0")
+    }else{
+        reject("The value isn't 0");
+    }
+})
+promise.then(message =>{
+    console.log("Succes:",message);
+})
+.catch(err=>{
+    console.log("error:",err);
+})
+const hero = document.querySelector(".tagline");
+function renderfacts(data){
+    hero.innerHTML=data;
+}
+fetch("https://catfact.ninja/fact?max_length=78").then(response =>response.json())
+.then(data =>{console.log(data);
+    renderfacts(data.fact);
+})
+
+.catch(error =>{console.log("Error: " ,error)});
