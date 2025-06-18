@@ -7,10 +7,12 @@ const destinations = [
     { id: 3, name: "Ibiza,Spain", price: 4000, days: 8, image: "./images/ibiza.jpg", location: { latitude: 38.9088, longitude: 1.4322 } },
     { id: 4, name: "Paris,France", price: 2500, days: 13, image: "./images/europe.png", location: { latitude: 48.8566, longitude: 2.3522 } }
 ];
+
 const search1=document.querySelector("#search");
-search1.value
+let filtered;
+const para = document.querySelector(".destinations-grid");
 function renderdestinations(dest){
-    let para = document.querySelector(".destinations-grid");
+    
     let div1 = document.createElement("div");
     div1.innerHTML=` <div class="destination-card">
             <img src="${dest.image}" alt="${dest.name}">
@@ -28,14 +30,14 @@ function renderdestinations(dest){
     para.appendChild(div1);
     console.log(dest);
 }
+
 destinations.map(destination =>renderdestinations(destination));
-
-
-
-
-
-
-
+search1.addEventListener("input",function(e){
+    let value = e.target.value;
+    filtered = destinations.filter(dest => dest.name.toLowerCase().includes(value.toLowerCase()));
+    para.innerHTML="";
+    filtered.map(dest=>renderdestinations(dest));
+});
 document.querySelectorAll('.cards, .destinations').forEach(carousel => {
     let isDown = false;
     let startX;
