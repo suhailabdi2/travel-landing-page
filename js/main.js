@@ -14,6 +14,9 @@ const destinations = [
     { id: 3, name: "Ibiza,Spain", price: 4000, days: 8, image: "./images/ibiza.jpg", location: { latitude: 38.9088, longitude: 1.4322 } },
     { id: 4, name: "Paris,France", price: 2500, days: 13, image: "./images/europe.png", location: { latitude: 48.8566, longitude: 2.3522 } }
 ];
+for (let key in destinations[0]){
+    console.log(`${key} :${destinations[0][key]}`)
+}
 const DOMElements = {
     container: document.querySelector(".destinations-grid"),
     search: document.getElementById('search'),
@@ -203,33 +206,29 @@ document.querySelectorAll('.carousel-container').forEach(initCarousel);
 function hi(sum){
     return sum ===0;
 }
-let promise = new Promise(function(resolve,reject){
-    let value=0;
-    if(hi(value)){
-        resolve("THe value is 0")
-    }else{
-        reject("The value isn't 0");
-    }
-})
-promise.then(message =>{
-    console.log("Succes:",message);
-})
-.catch(err=>{
-    console.log("error:",err);
-})
+
+
 const hero = document.querySelector(".tagline");
 document.querySelector(".play").addEventListener("click",function(){
-
-
     fetch("https://catfact.ninja/fact?max_length=78").then(response =>response.json())
-    .then(data =>{console.log(data);
-        renderfacts(data.fact);
-    })
+    .then(data =>
+        {console.log(data);
+        renderfacts(data.fact);})
     .catch(error =>{console.log("Error:" ,error)}) }
-    )
-
+)
     
 function renderfacts(data){
     hero.innerHTML=data;
 }
+async function asyncFunc(){
+    let result = await promise;
+    console.log(result);
+    console.log("hey hey");
+}
+let promise = new Promise(function (resolve,reject){
+    setTimeout(function(){
+        resolve('Promise REsolved', 4000);
+    })
+});
 
+asyncFunc();
